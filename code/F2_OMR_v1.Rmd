@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r, include=FALSE}
-setwd("J:/PhD/Semester 1.2/4. Fall Lab 2023/OMR")
+setwd("C:/Users/mxn833/OneDrive - University of Miami/Documents/lab_presentation_fall_2023/code")
 library(car)
 library(cowplot)
 library(Matrix)
@@ -35,7 +35,7 @@ glimpse(omrf2)
 ```{r}
 #Mixed model
 modelf2m1 <- glmer(responsem1 ~ treatment * sex + 
-                     (frequency|subject), data = omrf2, family = binomial(link = "logit"))
+                    (1|frequency/subject), data = omrf2, family = binomial(link = "logit"))
 summary(modelf2m1)
 ```
 #All but positive responses are 0, positive responses are 1, m1
@@ -56,7 +56,7 @@ summary(tukey_resultsf2m1sex)
 ```{r}
 #Mixed model 
 modelf2m2 <- glmer(responsem2 ~ treatment * sex + 
-                     (frequency|subject), data = omrf2, family = binomial(link = "logit"))
+                     (1|frequency/subject),data = omrf2, family = binomial(link = "logit"))
 summary(modelf2m2)
 ```
 #All but no response are 1, and no responses are 0, m2
@@ -77,7 +77,7 @@ summary(tukey_resultsf2m2sex)
 ```{r}
 #Mixed model
 modelf2m3 <- glmer(responsem3 ~ treatment * sex + 
-                     (frequency|subject), data = omrf2, family = binomial(link = "logit"))
+                     (1|frequency/subject), data = omrf2, family = binomial(link = "logit"))
 summary(modelf2m3)
 ```
 #All but negative response are o 1 and negative response are 0, m3
